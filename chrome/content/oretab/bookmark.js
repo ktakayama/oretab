@@ -1,9 +1,8 @@
 
+var _org = BookmarksCommand.openOneBookmark;
+
 BookmarksCommand.openOneBookmark = function (aURI, aTargetBrowser, aDS) {
    var url = BookmarksUtils.getProperty(aURI, gNC_NS+"URL", aDS);
-   // Ignore "NC:" and empty urls.
-   if (url == "")
-      return;
 
    if(aTargetBrowser == 'current' && url.indexOf('javascript:') != 0) {
       aTargetBrowser = 'tab';
@@ -11,6 +10,6 @@ BookmarksCommand.openOneBookmark = function (aURI, aTargetBrowser, aDS) {
       aTargetBrowser = 'current';
    }
 
-   openUILinkIn(url, aTargetBrowser);
+   _org.call(BookmarksCommand, aURI, aTargetBrowser, aDS);
 }
 
