@@ -5,6 +5,7 @@
 
    <script type="application/x-javascript" src="chrome://oretab/content/bookmark.js" />
    <script type="application/x-javascript" src="chrome://oretab/content/gbrowser.js" />
+   <script type="application/x-javascript" src="chrome://oretab/content/history.js" />
 
 </overlay>
 
