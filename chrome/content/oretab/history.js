@@ -1,9 +1,12 @@
 
-var _org = History.openURLIn;
+/*
+var _org = openURLIn;
 
-History.openURLIn = function(where) {
+openURLIn = function(where) {
    where = (where == 'current') ?  'tab' : 'current';
 
    _org.call(History, where);
 }
+
+*/
 
