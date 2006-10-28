@@ -4,9 +4,10 @@
    id="oretab">
 
    <script type="application/x-javascript" src="chrome://oretab/content/bookmark.js" />
-   <script type="application/x-javascript" src="chrome://oretab/content/gbrowser.js" />
-   <!-- <script type="application/x-javascript" src="chrome://oretab/content/history.js" /> -->
    <script type="application/x-javascript" src="chrome://oretab/content/focus.js" />
+   <script type="application/x-javascript" src="chrome://oretab/content/gbrowser.js" />
+   <script type="application/x-javascript" src="chrome://oretab/content/middlemouse.js" />
+   <!-- <script type="application/x-javascript" src="chrome://oretab/content/history.js" /> -->
 
 </overlay>
 
