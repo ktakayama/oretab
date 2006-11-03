@@ -9,24 +9,14 @@ var flst =
   tabHistory: new Array(),
   nbrOfTabs: 1,
   oldTab: null,
-  prefb: null,
 
   // init
   init: function()
   {
-    gBrowser.mTabBox.addEventListener('select', flst.onTabClose, true);
-    gBrowser.mTabBox.addEventListener('select', flst.onTabFocus, true);
-    gBrowser.mTabBox.addEventListener('mousedown', flst.onMouseDown, true);
-    gBrowser.mTabBox.addEventListener('click', flst.tabClickHandler,true);
-    var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-        .getService(Components.interfaces.nsIPrefService);
-    flst.prefb = prefService.getBranch("supert.");
-    // init pref
-    try {
-      var enabled = flst.prefb.getBoolPref("flst.enabled");
-    }catch(e){
-      flst.prefb.setBoolPref("flst.enabled", true);
-    }
+    gBrowser.mTabContainer.addEventListener('select', flst.onTabClose, true);
+    gBrowser.mTabContainer.addEventListener('select', flst.onTabFocus, true);
+    gBrowser.mTabContainer.addEventListener('mousedown', flst.tabClickHandler,true);
+
     // set flst_id on first tab
     var tab = gBrowser.selectedTab;
     tab.setAttribute('flst_id', new Date().getTime());
@@ -60,7 +50,6 @@ var flst =
   {
     var nt;
     var tabs = gBrowser.mTabContainer.childNodes;
-    var enabled = flst.prefb.getBoolPref("flst.enabled");
 
     // sync
     if(tabs.length > flst.nbrOfTabs)
@@ -72,9 +61,6 @@ var flst =
       flst.nbrOfTabs = tabs.length;
       // remove current tab from history
       var ot = flst.tabHistory.pop();
-      // check if disabled
-      if(!enabled)
-        return;
       //get last selected tab
       if (flst.tabHistory.length > 0)
         nt = flst.tabHistory.pop();
@@ -100,23 +86,13 @@ var flst =
       }
    },
 
-  onMouseDown: function(event)
-  {
-    if ((event.target.localName == "tab") && (event.target.linkedPanel.indexOf("panel")==0)) {
-      //event.preventDefault();
-      //event.preventBubble();
-      event.stopPropagation();
-    }
-  },
-
   tabClickHandler: function(event)
   {
-    if ((event.target.localName == "tab") && (event.target.linkedPanel.indexOf("panel")==0)) {
+    if ((event.button == 0) && (event.target.localName == "tab") && (event.target.linkedPanel.indexOf("panel")==0)) {
       if(gBrowser.selectedTab == event.target) {
          // flst.selectTab(flst.tabHistory.pop());
          flst.selectTab(flst.tabHistory[flst.tabHistory.length-2]);
-      } else {
-         gBrowser.selectedTab = event.target;
+         event.stopPropagation();
       }
     }
   }

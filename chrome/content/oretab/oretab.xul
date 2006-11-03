@@ -11,3 +11,14 @@
 
 </overlay>
 
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   id="faviconizetab">
+
+   <script type="application/x-javascript" src="chrome://oretab/content/faviconizetab.js" />
+
+   <commandset id="mainCommandSet">
+      <command id="fav_doFaviconizeTab" oncommand="doFaviconizeTab()"/>
+   </commandset>
+
+</overlay>
+
