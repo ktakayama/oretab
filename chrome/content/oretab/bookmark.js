@@ -1,7 +1,7 @@
 
 var _org = BookmarksCommand.openOneBookmark;
 
-BookmarksCommand.openOneBookmark = function (aURI, aTargetBrowser, aDS) {
+BookmarksCommand.openOneBookmark = function(aURI, aTargetBrowser, aDS) {
    var url = BookmarksUtils.getProperty(aURI, gNC_NS+"URL", aDS);
 
    var where = 'current';
