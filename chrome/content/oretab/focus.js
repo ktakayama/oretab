@@ -15,7 +15,8 @@ var flst =
   {
     gBrowser.mTabContainer.addEventListener('select', flst.onTabClose, true);
     gBrowser.mTabContainer.addEventListener('select', flst.onTabFocus, true);
-    gBrowser.mTabContainer.addEventListener('mousedown', flst.tabClickHandler,true);
+    gBrowser.mTabContainer.addEventListener('mousedown', flst.onMouseDown,true);
+    gBrowser.mTabContainer.addEventListener('click', flst.tabClickHandler,true);
 
     // set flst_id on first tab
     var tab = gBrowser.selectedTab;
@@ -86,13 +87,21 @@ var flst =
       }
    },
 
+  onMouseDown: function(event)
+  {
+    if ((event.target.localName == "tab") && (event.target.linkedPanel.indexOf("panel")==0)) {
+      event.stopPropagation();
+    }
+  },
+
   tabClickHandler: function(event)
   {
     if ((event.button == 0) && (event.target.localName == "tab") && (event.target.linkedPanel.indexOf("panel")==0)) {
       if(gBrowser.selectedTab == event.target) {
-         // flst.selectTab(flst.tabHistory.pop());
          flst.selectTab(flst.tabHistory[flst.tabHistory.length-2]);
-         event.stopPropagation();
+        // event.stopPropagation();
+      } else {
+         gBrowser.selectedTab = event.target;
       }
     }
   }
