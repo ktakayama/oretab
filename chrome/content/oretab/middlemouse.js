@@ -11,10 +11,15 @@ function middleInit() {
       if(url.indexOf(":") >= 0)
          return url;
 
-      if(url.indexOf(".") >= 0 && url.indexOf(" ") == -1)
+      var space = url.indexOf(" ");
+      if(url.indexOf(".") >= 0 && space == -1)
          return url;
 
-      if(url.indexOf(" ") >= 0 && url.indexOf("/") >= 0)
+      var slash = url.indexOf("/");
+      if(slash == 0)
+         return url;
+
+      if(space >= 0 && slash >= 0)
          return url;
 
       url = (gPrefs.getCharPref('keyword.URL')) + encodeURIComponent(url);
