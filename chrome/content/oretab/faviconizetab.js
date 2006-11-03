@@ -16,17 +16,14 @@ function FaviconizeTabInit() {
 
 function doFaviconizeTab() {
    var aTab = gBrowser.mContextTab;
-   var item = document.getElementById('tabContextFaviconizeTab');
    if(aTab._faviconizeMinWidth) {
       aTab.minWidth = aTab._faviconizeMinWidth;
       aTab.maxWidth = 250;
       aTab._faviconizeMinWidth = null;
-      item.label = 'FaviconizeTab';
    } else {
       aTab._faviconizeMinWidth = aTab.minWidth;
       aTab.minWidth = 50;
       aTab.maxWidth = 50;
-      item.label = 'undo FaviconizeTab';
    }
 }
 
