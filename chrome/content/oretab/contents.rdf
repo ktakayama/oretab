@@ -17,7 +17,7 @@
       <RDF:li>chrome://oretab/content/oretab.xul</RDF:li>
    </RDF:Seq>
    <RDF:Seq RDF:about="chrome://browser/content/bookmarks/bookmarksPanel.xul">
-      <RDF:li>chrome://oretab/content/bookmarks/bookmarks.xul</RDF:li>
+      <RDF:li>chrome://oretab/content/bookmarks/bookmarksPanel.xul</RDF:li>
    </RDF:Seq>
    <RDF:Seq RDF:about="chrome://browser/content/bookmarks/bookmarksManager.xul">
       <RDF:li>chrome://oretab/content/bookmarks/bookmarksManager.xul</RDF:li>

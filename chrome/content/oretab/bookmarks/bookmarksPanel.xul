@@ -3,6 +3,6 @@
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
    id="oretabBMPanel">
 
-   <script type="application/x-javascript" src="chrome://oretab/content/bookmark.js" />
+   <script type="application/x-javascript" src="chrome://oretab/content/bookmarks/bookmarks.js" />
 </overlay>
 

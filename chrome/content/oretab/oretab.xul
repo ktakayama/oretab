@@ -3,7 +3,8 @@
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
    id="oretab">
 
-   <script type="application/x-javascript" src="chrome://oretab/content/bookmark.js" />
+   <script type="application/x-javascript" src="chrome://oretab/content/bookmarks/bookmarks.js" />
+
    <script type="application/x-javascript" src="chrome://oretab/content/focus.js" />
    <script type="application/x-javascript" src="chrome://oretab/content/gbrowser.js" />
    <script type="application/x-javascript" src="chrome://oretab/content/middlemouse.js" />
