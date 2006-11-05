@@ -1,6 +1,6 @@
 
 // for [GO(History)] menu
-ORE_loadHistory = function(event) {
+var ORE_loadHistory = function(event) {
    var url = event.target.getAttribute('statustext');
    if (url) {
       var where = whereToOpenLink(event, false, true);
@@ -9,6 +9,10 @@ ORE_loadHistory = function(event) {
    }
 }
 
-var menu = document.getElementById('go-menu');
-menu.setAttribute('oncommand', 'ORE_loadHistory(event)');
+window.addEventListener('load', ORE_historyInit, false);
+
+function ORE_historyInit() {
+   var menu = document.getElementById('go-menu');
+   menu.setAttribute('oncommand', 'ORE_loadHistory(event)');
+}
 
