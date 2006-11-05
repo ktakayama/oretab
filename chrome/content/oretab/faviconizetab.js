@@ -15,18 +15,20 @@ function FaviconizeTabInit() {
 }
 
 function doFaviconizeTab() {
-   var aTab = gBrowser.mContextTab;
+   var tab = gBrowser.mContextTab;
+   if(tab.localName != "tab")
+      tab = gBrowser.mCurrentTab;
 
-   if(aTab._faviconize) {
-      aTab.minWidth = gBrowser.mTabContainer.mTabMinWidth;
-      aTab.maxWidth = 250;
-      aTab.className = "tabbrowser-tab";
+   if(tab._faviconize) {
+      tab.minWidth = gBrowser.mTabContainer.mTabMinWidth;
+      tab.maxWidth = 250;
+      tab.className = "tabbrowser-tab";
    } else {
-      aTab.minWidth = 32;
-      aTab.maxWidth = 32;
-      aTab.className = "faviconize-tab";
+      tab.minWidth = 32;
+      tab.maxWidth = 32;
+      tab.className = "faviconize-tab";
    }
 
-   aTab._faviconize = !aTab._faviconize;
+   tab._faviconize = !tab._faviconize;
 }
 
