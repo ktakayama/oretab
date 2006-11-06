@@ -14,8 +14,8 @@ function FaviconizeTabInit() {
    var tabMenu = gBrowser.mStrip.firstChild.nextSibling;
    var tabItem = document.createElement('menuitem');
    tabItem.setAttribute('id',       'tabContextFaviconizeTab');
-   tabItem.setAttribute('command',  'fav_doFaviconizeTab');
    tabItem.setAttribute('label',    'FaviconizeTab');
+   tabItem.setAttribute('oncommand','doFaviconizeTab();');
    tabItem.setAttribute('accesskey','f');
 
    var pos = tabMenu.lastChild.previousSibling;
