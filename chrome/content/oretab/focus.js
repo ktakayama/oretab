@@ -55,6 +55,7 @@ var oreFocus = {
    },
 
    clickTab: function(event) {
+      if(event.target.mOverCloseButton) return;
       if((event.button == 0) && (event.target.localName == "tab")) {
          if(oreFocus.lastTab == event.target) {
             // debug('focus');
