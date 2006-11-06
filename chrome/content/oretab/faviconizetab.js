@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2006, Kyosuke Takayama <support@mc.neweb.ne.jp>
+
+ * It is released under the MIT LICENSE.
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.opensource.jp/licenses/mit-license.html
+*/
 
 window.addEventListener('load', FaviconizeTabInit, false);
 
@@ -7,8 +14,9 @@ function FaviconizeTabInit() {
    var tabMenu = gBrowser.mStrip.firstChild.nextSibling;
    var tabItem = document.createElement('menuitem');
    tabItem.setAttribute('id',       'tabContextFaviconizeTab');
-   tabItem.setAttribute('label',    'FaviconizeTab');
    tabItem.setAttribute('command',  'fav_doFaviconizeTab');
+   tabItem.setAttribute('label',    'FaviconizeTab');
+   tabItem.setAttribute('accesskey','f');
 
    var pos = tabMenu.lastChild.previousSibling;
    tabMenu.insertBefore(tabItem, pos);
