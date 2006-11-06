@@ -1,5 +1,5 @@
 
-var _org = BookmarksCommand.openOneBookmark;
+var _org_openOneBookmark = BookmarksCommand.openOneBookmark;
 
 BookmarksCommand.openOneBookmark = function(aURI, aTargetBrowser, aDS) {
    var url = BookmarksUtils.getProperty(aURI, gNC_NS+"URL", aDS);
@@ -8,6 +8,6 @@ BookmarksCommand.openOneBookmark = function(aURI, aTargetBrowser, aDS) {
    if(aTargetBrowser == 'current' && url.indexOf('javascript:') != 0)
       where = 'tab';
 
-   _org.call(BookmarksCommand, aURI, where, aDS);
+   _org_openOneBookmark.call(BookmarksCommand, aURI, where, aDS);
 }
 
