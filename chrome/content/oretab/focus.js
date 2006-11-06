@@ -1,6 +1,8 @@
 
 window.addEventListener('load', focusInit, false);
 
+var _orgRemoveTab;
+
 function focusInit() {
    gBrowser.mTabContainer.addEventListener('mousedown', oreFocus.mousedownTab,true);
    gBrowser.mTabContainer.addEventListener('click',  oreFocus.clickTab,true);
@@ -11,7 +13,7 @@ function focusInit() {
             'if(oldTab._ore) this.selectedTab = oldTab._ore; else this.selectedTab = '
             ));
 
-   var _org = gBrowser.removeTab;
+   _orgRemoveTab = gBrowser.removeTab;
 
    gBrowser.removeTab = function(aTab) {
       oreFocus.remove(aTab.linkedPanel);
@@ -19,7 +21,7 @@ function focusInit() {
       aTab._ore  = id2tab(oreFocus.history.pop());
       aTab.owner = null;
 
-      _org.apply(gBrowser, arguments);
+      _orgRemoveTab.apply(gBrowser, arguments);
    }
 }
 
