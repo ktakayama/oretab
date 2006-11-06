@@ -23,16 +23,17 @@ function focusInit() {
    }
 }
 
+// 例外を考えないといけない
 function id2tab(id) {
    var containerChilds = gBrowser.mTabContainer.childNodes;
-   var newIndex = 0;
+
    for(var i = 0; i < containerChilds.length; ++i) {
       if(containerChilds[i].linkedPanel == id) {
-         newIndex = i;
-         break;
+         return containerChilds[i];
       }
    }
-   return containerChilds[newIndex];
+
+   return undefined;
 }
 
 var oreFocus = {
@@ -57,7 +58,8 @@ var oreFocus = {
       if((event.button == 0) && (event.target.localName == "tab")) {
          if(oreFocus.lastTab == event.target) {
             // debug('focus');
-            gBrowser.selectedTab = id2tab(oreFocus.history[oreFocus.history.length-2]);
+            var nTab = id2tab(oreFocus.history[oreFocus.history.length-2]);
+            if(nTab) gBrowser.selectedTab = nTab;
          }
       }
    },
