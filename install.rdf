@@ -6,11 +6,11 @@
   <RDF:Description about="urn:mozilla:install-manifest">
 
     <em:id>oretab@espion.just-size.jp</em:id>
-    <em:version>0.8.2</em:version>
+    <em:version>0.8.3</em:version>
     <em:name>OreTab</em:name>
     <em:description>OreTab</em:description>
     <em:creator>Kyosuke Takayama</em:creator>
-    <em:homepageURL>http://espion.just-size.jp/</em:homepageURL>
+    <em:homepageURL>http://espion.just-size.jp/archives/06/298131210.html</em:homepageURL>
 
     <em:targetApplication>
       <RDF:Description>
