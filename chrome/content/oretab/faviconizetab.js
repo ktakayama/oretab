@@ -62,5 +62,5 @@ var faviconize = {
 }
 
 window.addEventListener('load', faviconize.init, false);
-window.addEventListener('SSTabRestored', faviconize.restore, false);
+window.addEventListener('SSTabRestoring', faviconize.restore, false);
 
