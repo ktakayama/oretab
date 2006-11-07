@@ -6,39 +6,61 @@
  * http://www.opensource.jp/licenses/mit-license.html
 */
 
-window.addEventListener('load', FaviconizeTabInit, false);
+var faviconize = {
+   session: null,
 
-function FaviconizeTabInit() {
-   if(document.getElementById('tabContextFaviconizeTab')) return;
+   init: function() {
+      if(document.getElementById('tabContextFaviconizeTab')) return;
 
-   var tabMenu = gBrowser.mStrip.firstChild.nextSibling;
-   var tabItem = document.createElement('menuitem');
-   tabItem.setAttribute('id',       'tabContextFaviconizeTab');
-   tabItem.setAttribute('label',    'FaviconizeTab');
-   tabItem.setAttribute('oncommand','toggleFaviconize(gBrowser.mContextTab);');
-   tabItem.setAttribute('accesskey','f');
+      var tabMenu = gBrowser.mStrip.firstChild.nextSibling;
+      var tabItem = document.createElement('menuitem');
+      tabItem.setAttribute('id',       'tabContextFaviconizeTab');
+      tabItem.setAttribute('label',    'FaviconizeTab');
+      tabItem.setAttribute('oncommand','faviconize.toggle(gBrowser.mContextTab);');
+      tabItem.setAttribute('accesskey','f');
 
-   var pos = tabMenu.lastChild.previousSibling;
-   tabMenu.insertBefore(tabItem, pos);
-}
+      var pos = tabMenu.lastChild.previousSibling;
+      tabMenu.insertBefore(tabItem, pos);
 
-function toggleFaviconize(tab) {
-   if(!tab || tab.localName != 'tab')
-      tab = gBrowser.mCurrentTab;
+      if(typeof Cc != 'undefined')
+         faviconize.session = Cc["@mozilla.org/browser/sessionstore;1"].getService(Ci.nsISessionStore);
+   },
 
-   if(tab._faviconized) {
-      tab.className = tab.className.replace(' faviconized', '');
-      tab.minWidth  = tab._oldMinWidth;
-      tab.maxWidth  = tab._oldMaxWidth;
-   } else {
-      tab._oldMinWidth  = tab.minWidth || gBrowser.mTabContainer.mTabMinWidth;
-      tab._oldMaxWidth  = tab.maxWidth || 250;
+   restore: function(event) {
+      var tab = event.originalTarget;
 
-      tab.className = tab.className + ' faviconized';
-      tab.minWidth  = '';
-      tab.maxWidth  = '';
+      if(faviconize.session.getTabValue(tab, 'faviconized')) {
+         tab._faviconized = false,
+         faviconize.toggle(tab);
+      }
+   },
+
+   toggle: function(tab) {
+      if(!tab || tab.localName != 'tab')
+         tab = gBrowser.mCurrentTab;
+
+      var session = faviconize.session;
+
+      if(tab._faviconized) {
+         tab.className = tab.className.replace(' faviconized', '');
+         tab.minWidth  = tab._oldMinWidth;
+         tab.maxWidth  = tab._oldMaxWidth;
+         if(session) session.deleteTabValue(tab, 'faviconized');
+      } else {
+         tab._oldMinWidth  = tab.minWidth || gBrowser.mTabContainer.mTabMinWidth;
+         tab._oldMaxWidth  = tab.maxWidth || 250;
+
+         tab.className = tab.className + ' faviconized';
+         tab.minWidth  = '';
+         tab.maxWidth  = '';
+
+         if(session) session.setTabValue(tab, 'faviconized', true);
+      }
+
+      tab._faviconized = !tab._faviconized;
    }
-
-   tab._faviconized = !tab._faviconized;
 }
+
+window.addEventListener('load', faviconize.init, false);
+window.addEventListener('SSTabRestored', faviconize.restore, false);
 
