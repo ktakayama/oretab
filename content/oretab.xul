@@ -10,7 +10,6 @@
    <script type="application/x-javascript" src="chrome://oretab/content/focus.js" />
    <script type="application/x-javascript" src="chrome://oretab/content/gbrowser.js" />
    <script type="application/x-javascript" src="chrome://oretab/content/middlemouse.js" />
-   <script type="application/x-javascript" src="chrome://oretab/content/faviconizetab.js" />
 
 </overlay>
 
