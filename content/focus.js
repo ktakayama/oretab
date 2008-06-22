@@ -25,7 +25,7 @@ function focusInit() {
    }
 }
 
-// Îã³°¤ò¹Í¤¨¤Ê¤¤¤È¤¤¤±¤Ê¤¤
+// ä¾‹å¤–ã‚’è€ƒãˆãªã„ã¨ã„ã‘ãªã„
 function id2tab(id) {
    var containerChilds = gBrowser.mTabContainer.childNodes;
 
