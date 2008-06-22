@@ -1,7 +1,6 @@
 
 overlay	chrome://browser/content/browser.xul	chrome://oretab/content/oretab.xul
-overlay	chrome://browser/content/bookmarks/bookmarksPanel.xul	chrome://oretab/content/bookmarks/bookmarksPanel.xul
-overlay	chrome://browser/content/bookmarks/bookmarksManager.xul	chrome://oretab/content/bookmarks/bookmarksManager.xul
-overlay	chrome://browser/content/history/history-panel.xul	chrome://oretab/content/history/history-panel.xul
+overlay	chrome://browser/content/bookmarks/bookmarksPanel.xul	chrome://oretab/content/sidebar/sidebar.xul
+overlay	chrome://browser/content/history/history-panel.xul	chrome://oretab/content/sidebar/sidebar.xul
 content	oretab	content/
 
