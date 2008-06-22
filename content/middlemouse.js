@@ -3,12 +3,13 @@ window.addEventListener('load', middleInit, false);
 
 function middleInit() {
 
-   var gPrefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+   var gPrefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBranch(null);
 
    var org = readFromClipboard;
    readFromClipboard = function() {
       var url = org();
-      if(url.indexOf(":") >= 0)
+
+      if(/^\w+:/.test(url))
          return url;
 
       var space = url.indexOf(" ");
@@ -25,20 +26,5 @@ function middleInit() {
       url = (gPrefs.getCharPref('keyword.URL')) + encodeURIComponent(url);
       return url;
    }
-
-   /*
-   var _o = getShortcutOrURI;
-   getShortcutOrURI = function(aURL, aPost) {
-      var url = aURL;
-      if(url.indexOf(".") == -1 &&
-            url.indexOf(":") == -1
-            ) {
-         //%B0%DC%C6%B0
-         url = (gPrefs.getCharPref('keyword.URL')) + encodeURIComponent(url);
-      url = 'hoge';
-      }
-      return _o.call(null, url, aPost);
-   }
-   */
 }
 
