@@ -18,8 +18,10 @@ function focusInit() {
    gBrowser.removeTab = function(aTab) {
       oreFocus.remove(aTab.linkedPanel);
 
-      aTab._ore  = id2tab(oreFocus.history.pop());
-      aTab.owner = null;
+      if(gBrowser.mCurrentTab == aTab) {
+         aTab._ore  = id2tab(oreFocus.history.pop());
+         aTab.owner = null;
+      }
 
       _org_removeTab.apply(gBrowser, arguments);
    }
