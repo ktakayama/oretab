@@ -8,14 +8,14 @@ function focusInit() {
    gBrowser.mTabContainer.addEventListener('click',  oreFocus.clickTab,true);
    gBrowser.mTabContainer.addEventListener('select', oreFocus.selectTab, true);
 
-   eval("gBrowser.removeTab ="+gBrowser.removeTab.toString().replace(
-            'this.selectedTab =',
-            'if(oldTab._ore) this.selectedTab = oldTab._ore; else this.selectedTab = '
+   eval("gBrowser._blurTab ="+gBrowser._blurTab.toString().replace(
+            'this.selectedTab = tab',
+            'this.selectedTab = this.mCurrentTab._ore || tab'
             ));
 
-   _org_removeTab = gBrowser.removeTab;
+   _org_removeTab = gBrowser._blurTab;
 
-   gBrowser.removeTab = function(aTab) {
+   gBrowser._blurTab = function(aTab) {
       oreFocus.remove(aTab.linkedPanel);
 
       if(gBrowser.mCurrentTab == aTab) {
