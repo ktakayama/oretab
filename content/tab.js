@@ -5,11 +5,11 @@ window.addEventListener('load', function ORE_openUILinkInit() {
 } , false);
 
 // bookmark, sidebar
-var __org_openNodeIn = PlacesUIUtils.openNodeIn;
-PlacesUIUtils.openNodeIn = function ORE_PU_openNodeIn(aNode, aWhere) {
+var __org_openNodeIn = PlacesUIUtils._openNodeIn;
+PlacesUIUtils._openNodeIn = function ORE_PU_openNodeIn(aNode, aWhere, aWindow) {
    var aWhere = oretab_switch(aWhere);
    if(/^javascript:/.test(aNode.uri)) aWhere = 'current';
-   __org_openNodeIn.call(PlacesUIUtils, aNode, aWhere);
+   return __org_openNodeIn.call(PlacesUIUtils, aNode, aWhere, aWindow);
 }
 
 function oretab_switch(where) {
