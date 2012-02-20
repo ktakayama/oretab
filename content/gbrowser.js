@@ -5,11 +5,10 @@ window.addEventListener('load', gBrowserInit, false);
 function gBrowserInit() {
    eval("gBrowser.loadOneTab ="+gBrowser.loadOneTab.toString().replace(
             // From
-            'aRelatedToCurrent});',
+            'aIsUTF8});',
 
             // To
-            'aRelatedToCurrent});' +
-            // 'if(this.mTabContainer.childNodes.length>this.mTabContainer.selectedIndex+2) ' +
+            'aIsUTF8});' +
             '  this.moveTabTo(tab, this.mTabContainer.selectedIndex+1);'
 
             ));
