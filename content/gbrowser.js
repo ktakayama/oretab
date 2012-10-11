@@ -1,8 +1,6 @@
 
-window.addEventListener('load', gBrowserInit, false);
-
 // カレントタブの隣に新タブを開く
-function gBrowserInit() {
+window.addEventListener('load', function() {
    eval("gBrowser.loadOneTab ="+gBrowser.loadOneTab.toString().replace(
             // From
             'aIsUTF8});',
@@ -12,5 +10,5 @@ function gBrowserInit() {
             '  this.moveTabTo(tab, this.mTabContainer.selectedIndex+1);'
 
             ));
-}
+   }, false);
 

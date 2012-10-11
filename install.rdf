@@ -6,7 +6,7 @@
    <RDF:Description about="urn:mozilla:install-manifest">
 
       <em:id>oretab@espion.just-size.jp</em:id>
-      <em:version>10.0.0</em:version>
+      <em:version>16.0.0</em:version>
       <em:name>OreTab</em:name>
       <em:description>tiny tab extension just for me.</em:description>
       <em:creator>Kyosuke Takayama</em:creator>
@@ -16,7 +16,7 @@
          <RDF:Description>
             <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
             <em:minVersion>10.0</em:minVersion>
-            <em:maxVersion>10.*</em:maxVersion>
+            <em:maxVersion>16.*</em:maxVersion>
          </RDF:Description>
       </em:targetApplication>
 
