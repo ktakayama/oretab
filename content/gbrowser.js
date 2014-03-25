@@ -3,10 +3,10 @@
 window.addEventListener('load', function() {
    eval("gBrowser.loadOneTab ="+gBrowser.loadOneTab.toString().replace(
             // From
-            'aIsUTF8});',
+            'aDisableMCB});',
 
             // To
-            'aIsUTF8});' +
+            'aDisableMCB});' +
             '  this.moveTabTo(tab, this.mTabContainer.selectedIndex+1);'
 
             ));
